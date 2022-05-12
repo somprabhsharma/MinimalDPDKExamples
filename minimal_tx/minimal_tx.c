@@ -199,6 +199,9 @@ static void send_packet(void)
 	pkts_burst[0] = pkt;
         const uint16_t nb_tx = rte_eth_tx_burst(0, 0, pkts_burst, 1);
 	packet_count += nb_tx;
+
+        printf("sent %d packets:\n",packet_count);
+
 	rte_mbuf_raw_free(pkt);
 }
 
@@ -347,7 +350,7 @@ int main(int argc, char **argv)
 	t1 = time(NULL);
 	while (true) {
 		counter++;
-		if (counter % 35 == 0) {
+		if (counter % 2 == 0) {
 			usleep(1);
 		}
 		send_packet();

@@ -140,7 +140,7 @@ void rx_packets(void)
 
 			packet_count += nb_rx;
 
-			//printf("received %d packets:\n",nb_rx);
+			printf("received %d packets:\n",nb_rx);
 
 			for(i=0;i<nb_rx;++i){
 
