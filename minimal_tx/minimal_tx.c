@@ -200,7 +200,7 @@ static void send_packet(void)
         const uint16_t nb_tx = rte_eth_tx_burst(0, 0, pkts_burst, 1);
 	packet_count += nb_tx;
 
-        printf("sent %d packets:\n",packet_count);
+        printf("sent %d packets:\n",nb_tx);
 
 	rte_mbuf_raw_free(pkt);
 }
