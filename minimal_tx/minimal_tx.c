@@ -351,7 +351,7 @@ int main(int argc, char **argv)
 	while (true) {
 		counter++;
 		if (counter % 2 == 0) {
-			usleep(1);
+			usleep(10000000);
 		}
 		send_packet();
 	}
