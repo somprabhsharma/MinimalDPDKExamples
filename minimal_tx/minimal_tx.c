@@ -283,6 +283,7 @@ int main(int argc, char **argv)
 	uint16_t pkt_data_len;
 	int mac_flag=0,ip_src_flag=0,ip_dst_flag=0;
 	int counter = 0;
+        uint16_t portid;
 
 	ret = rte_eal_init(argc, argv);
 	if (ret < 0)
@@ -336,8 +337,14 @@ int main(int argc, char **argv)
                 rte_exit(EXIT_FAILURE, "Cannot create mbuf pool\n");
 
 	// initialize port 0
-	if (port_init(0) != 0)
-		rte_exit(EXIT_FAILURE, "Cannot init port 0\n");
+	//if (port_init(0) != 0)
+	//	rte_exit(EXIT_FAILURE, "Cannot init port 0\n");
+
+        /* Initialize all ports. */
+        RTE_ETH_FOREACH_DEV(portid)
+                if (port_init(portid) != 0)
+                        rte_exit(EXIT_FAILURE, "Cannot init port 0\n");
+
 
 
 	printf("Sending packets ... [Press Ctrl+C to exit]\n");
